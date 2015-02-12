@@ -1,4 +1,4 @@
-package algorithms.convert_sorted_array_to_binary_search_tree;
+package algorithms._108_convert_sorted_array_to_binary_search_tree;
 
 /*
  * This class is provided by LeetCode.

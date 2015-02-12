@@ -1,4 +1,4 @@
-package algorithms.merge_k_sorted_lists;
+package algorithms._023_merge_k_sorted_lists;
 
 import java.util.List;
 

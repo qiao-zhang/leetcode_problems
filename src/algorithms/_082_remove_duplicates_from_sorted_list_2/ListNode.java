@@ -1,7 +1,7 @@
-package algorithms.merge_two_sorted_lists;
+package algorithms._082_remove_duplicates_from_sorted_list_2;
 
-/**
- * This class is provided by LeetCode.
+/*
+ * Provided by LeetCode.
  */
 public class ListNode {
 	int val;

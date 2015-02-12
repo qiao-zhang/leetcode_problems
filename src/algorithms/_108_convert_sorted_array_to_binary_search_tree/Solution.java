@@ -1,7 +1,7 @@
 /*
  * Solution to 108 - Convert Sorted Array to Binary Search Tree
  */
-package algorithms.convert_sorted_array_to_binary_search_tree;
+package algorithms._108_convert_sorted_array_to_binary_search_tree;
 
 import java.util.Arrays;
 

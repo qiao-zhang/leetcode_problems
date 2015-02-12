@@ -1,5 +1,8 @@
-package algorithms.merge_k_sorted_lists;
+package algorithms._021_merge_two_sorted_lists;
 
+/**
+ * This class is provided by LeetCode.
+ */
 public class ListNode {
 	int val;
 	ListNode next;

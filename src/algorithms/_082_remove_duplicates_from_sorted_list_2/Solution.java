@@ -1,4 +1,4 @@
-package algorithms.remove_duplicates_from_sorted_list_2;
+package algorithms._082_remove_duplicates_from_sorted_list_2;
 
 /*
  * Solution for 82 - Remove Duplicates from Sorted Array II

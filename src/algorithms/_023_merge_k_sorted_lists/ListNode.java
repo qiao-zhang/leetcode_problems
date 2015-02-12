@@ -1,8 +1,5 @@
-package algorithms.remove_duplicates_from_sorted_list_2;
+package algorithms._023_merge_k_sorted_lists;
 
-/*
- * Provided by LeetCode.
- */
 public class ListNode {
 	int val;
 	ListNode next;

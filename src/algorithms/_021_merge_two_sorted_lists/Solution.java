@@ -3,7 +3,8 @@
  * https://oj.leetcode.com/problems/merge-two-sorted-lists/
  */
 
-package algorithms.merge_two_sorted_lists;
+package algorithms._021_merge_two_sorted_lists;
+
 
 public class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {

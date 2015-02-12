@@ -3,7 +3,7 @@
  * https://oj.leetcode.com/problems/insert-interval/
  */
 
-package algorithms.insert_interval;
+package algorithms._057_insert_interval;
 
 import java.util.List;
 import java.util.ArrayList;

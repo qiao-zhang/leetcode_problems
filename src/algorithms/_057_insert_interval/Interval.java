@@ -1,4 +1,4 @@
-package algorithms.insert_interval;
+package algorithms._057_insert_interval;
 
 /**
  * This class is provided by LeetCode.
