@@ -10,22 +10,13 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
-        if not head:
-            return None
-        if not head.next:
-            return head
-        odd, evenHead, even = head, head.next, head.next
-        while odd and even:
-            if even.next:
+        if head:
+            odd, even, evenHead = head, head.next, head.next
+            while even:
+                if not even.next: break
                 odd.next = even.next
                 odd = odd.next
-            else:
-                break
-            if odd.next:
                 even.next = odd.next
                 even = even.next
-            else:
-                break
-        even.next = None
-        odd.next = evenHead
+            odd.next = evenHead
         return head
