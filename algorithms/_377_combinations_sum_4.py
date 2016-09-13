@@ -7,7 +7,5 @@ class Solution(object):
         """
         D = [1] + [0] * target
         for i in range(1, target + 1):
-            for j in nums:
-                if j > i: continue
-                D[i] += D[i - j]
+            D[i] = sum(D[i - j] for j in nums if j <= i)
         return D[target]
