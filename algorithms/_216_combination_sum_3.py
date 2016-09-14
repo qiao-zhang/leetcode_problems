@@ -5,18 +5,17 @@ class Solution(object):
         :type n: int
         :rtype: List[List[int]]
         """
-        def solve(k, n, l):
+        def ksum(start, k, step=1):
+            return start * k + k * (k - 1) * step / 2
+        def solve(k, n, lo=1, hi=9):
             if k <= 0: return []
-            if n <= 0: return []
-            if n > (19 - k) * k / 2: return []
-            i, res = l, []
-            while True:
-                mn = (i * 2 + k - 1) * k / 2
-                if n < mn: break
-                if n == mn:
+            res = []
+            for i in range(lo, hi - k + 2):
+                s = ksum(i, k)
+                if n < s: break
+                if n == s:
                     res.append(list(range(i, i+k)))
                     break
-                res.extend([i] + p for p in solve(k-1, n-i, i+1))
-                i += 1
+                res.extend([i] + lst for lst in solve(k-1, n-i, i+1))
             return res
-        return solve(k, n, 1)
+        return solve(k, n)
