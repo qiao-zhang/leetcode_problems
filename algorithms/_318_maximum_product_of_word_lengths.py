@@ -9,4 +9,5 @@ class Solution(object):
             mask = 0
             for c in word:
                 mask |= 1 << (ord(c) - ord('a'))
+            D[mask] = max(D.get(mask, 0), len(word))
         return max([D[x] * D[y] for x in D for y in D if not x & y] or [0])

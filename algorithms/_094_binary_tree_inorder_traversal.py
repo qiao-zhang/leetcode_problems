@@ -11,16 +11,18 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        cur, res, stack = root, [], []
-        while True:
-            while cur:
-                stack.append(cur)
-                cur = cur.left
-            if not stack: break
-            node = stack.pop()
-            res.append(node.val)
-            cur = node.right
-        return res
+        def inorderIterWithGen(root):
+            cur, stack = root, []
+            while True:
+                while cur:
+                    stack.append(cur)
+                    cur = cur.left
+                if not stack: break
+                node = stack.pop()
+                yield node.val
+                cur = node.right
+
+        return list(inorderIter(root))
 
     def inorderTraversalRec(self, root):
         if not root:
