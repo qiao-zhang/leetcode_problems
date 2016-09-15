@@ -13,7 +13,7 @@ class Solution(object):
         :type k: str
         :rtype: int
         """
-        return next(islice(self.inorder(root)), k-1, k)
+        return next(islice(self.inorder(root), k-1, k))
 
     def inorder(self, root):
         if root:
