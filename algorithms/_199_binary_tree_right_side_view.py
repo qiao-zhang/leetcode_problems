@@ -11,7 +11,15 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        def solveIteratively():
+        def bfs():
+            if not root: return []
+            res, level = [], [root]
+            while level:
+                res.append(level[-1].val)
+                level = [kid for node in level for kid in (node.left, node.right) if kid]
+            return res
+
+        def dfsIterative():
             res, cur, i, stack = [], root, 0, []
             while True:
                 while cur:
@@ -25,4 +33,7 @@ class Solution(object):
                     cur = node.left
                     i = level + 1
             return res
-        return solveIteratively()
+
+        def dfsRecursive():
+            pass
+        return bfs()

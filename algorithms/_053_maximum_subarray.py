@@ -5,7 +5,7 @@ class Solution(object):
         :rtype: int
         """
         def solveIteratively():
-            if not nums: return
+            assert nums
             s, ms = 0, -float('inf')
             for num in nums:
                 s += num
@@ -13,12 +13,14 @@ class Solution(object):
                 s = max(0, s)
             return ms
 
-        def solveRecursively(start=0):
-            if start >= len(nums): return -float('inf')
-            i, s, ms = start+1, nums[start], nums[start]
-            while i < len(nums) and s > 0:
-                s += nums[i]
-                ms = max(ms, s)
-                i += 1
-            return max(ms, solveRecursively(i))
-        return solveIteratively()
+        def solveDC():
+            assert nums
+            def helper(nums=nums):
+                if len(nums) == 1: return (nums[0],) * 4
+                m = len(nums) // 2
+                fb, fn, fl, fr = helper(nums[:m])
+                sb, sn, sl, sr = helper(nums[m:])
+                return fb + sb, max(fn, sn, fr + sl), max(fl, fb + sl), max(fr + sb, sr)
+            return max(helper())
+
+        return solveDC()

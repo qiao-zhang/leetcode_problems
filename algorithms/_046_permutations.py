@@ -4,15 +4,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        def solveUsingLib():
-            return [list(p) for p in itertools.permutations(nums)]
+        def solveUsingLibrary():
+            return [list(perm) for perm in itertools.permutations(nums)]
 
-        def solve(iter):
-            if not iter: return
-            if len(iter) == 1: yield [iter[0]]
-            for i, n in enumerate(iter):
-                newIter = iter[:i] + iter[i+1:]
-                for perm in solve(newIter):
-                    yield [n] + perm
+        def solveDFS(nums=nums):
+            if not nums: yield []
+            for i, num in enumerate(nums):
+                for lst in solveDFS(nums[:i] + nums[i+1:]):
+                    yield [num] + lst
 
-        return list(solve(nums))
+        def solveBFS():
+            pass
+
+        return list(solveDFS())

@@ -5,18 +5,16 @@ class Solution(object):
         :type target: int
         :rtype: int
         """
-        return self.binarySI(nums, target)
+        def solveBinarySearch():
+            lo, hi = 0, len(nums)
+            while lo < hi:
+                m = (lo + hi) // 2
+                if nums[m] == target: return m
+                if nums[m] > target: hi = m
+                else: lo = m + 1
+            return hi
 
-    def binarySI(self, nums, target):
-        lo, hi = 0, len(nums)
-        while lo < hi:
-            m = (lo + hi) // 2
-            if nums[m] == target: return m
-            if nums[m] > target:
-                hi = m
-            else:
-                lo = m + 1
-        return hi
+        def solveUsingLibrary():
+            return bisect.bisect_left(nums, target)
 
-    def bisectSI(self, nums, target):
-        return bisect.bisect_left(nums, target)
+        return solveUsingLibrary()
