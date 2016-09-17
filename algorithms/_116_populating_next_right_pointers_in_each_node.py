@@ -12,25 +12,12 @@ class Solution(object):
         :type root: TreeLinkNode
         :rtype: nothing
         """
-        def dfsIteratively():
-            cur, R, stack, l = root, [], [], 0
-            while True:
-                while cur:
-                    stack.append((cur, l))
-                    if l < len(R):
-                        cur.next, R[l] = R[l], cur
-                    elif l == len(R):
-                        R.append(cur)
-                    cur, l = cur.right, l+1
-                if not stack: break
-                node, level = stack.pop()
-                cur, l = node.left, level+1
-        
-        def bfs():
-            if not root: return
-            level = [root]
-            while level:
-                for i in range(len(level)-1):
-                    level[i].next = level[i+1]
-                level = [kid for node in level for kid in (node.left, node.right) if kid]
-        return bfs()
+        parent = root
+        while parent and parent.left:
+            kid = parent.left
+            while parent:
+                parent.left.next = parent.right
+                if parent.next:
+                    parent.right.next = parent.next.left
+                parent = parent.next
+            parent = kid
