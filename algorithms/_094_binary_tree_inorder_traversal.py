@@ -11,22 +11,16 @@ class Solution(object):
         :type root: TreeNode
         :rtype: List[int]
         """
-        def inorderIterWithGen(root):
-            cur, stack = root, []
-            while True:
-                while cur:
-                    stack.append(cur)
-                    cur = cur.left
-                if not stack: break
-                node = stack.pop()
-                yield node.val
-                cur = node.right
-
-        return list(inorderIter(root))
-
-    def inorderTraversalRec(self, root):
-        if not root:
-            return []
-        return self.inorderTraversalRec(root.left) +\
-            [root.val] +\
-            self.inorderTraversalRec(root.right)
+        def inorderIterWithGen(root=root):
+            def helper():
+                cur, stack = root, []
+                while True:
+                    while cur:
+                        stack.append(cur)
+                        cur = cur.left
+                    if not stack: break
+                    node = stack.pop()
+                    yield node.val
+                    cur = node.right
+            return list(helper())
+        return inorderIterWithGen()

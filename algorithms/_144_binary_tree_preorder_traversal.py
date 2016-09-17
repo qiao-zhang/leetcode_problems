@@ -12,14 +12,14 @@ class Solution(object):
         :rtype: List[int]
         """
         def solveIteratively():
-            cur, stack, res = root, [], []
-            while True:
-                while cur:
-                    res.append(cur.val)
-                    stack.append(cur)
-                    cur = cur.left
-                if not stack: break
-                node = stack.pop()
-                cur = node.right
-            return res
+            def helper():
+                cur, stack = root, []
+                while True:
+                    while cur:
+                        yield cur.val
+                        stack.append(cur)
+                        cur = cur.left
+                    if not stack: break
+                    cur = stack.pop().right
+            return list(helper())
         return solveIteratively()

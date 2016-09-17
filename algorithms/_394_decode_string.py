@@ -4,17 +4,18 @@ class Solution(object):
         :type s: str
         :rtype: str
         """
-        stack = [['', 1]]
-        numStr = ''
-        for c in s:
-            if c.isdigit():
-                numStr += c
-            elif c == '[':
-                stack.append(['', int(numStr)])
-                numStr = ''
-            elif c == ']':
-                st, k = stack.pop()
-                stack[-1][0] += (st * k)
-            else:
-                stack[-1][0] += c
-        return stack[0][0]
+        def solveIteratively():
+            stack, num = [['', 1]], ''
+            for ch in s:
+                if ch.isdigit():
+                    num += ch
+                elif ch == '[':
+                    stack.append(['', int(num)])
+                    num = ''
+                elif ch == ']':
+                    p, n = stack.pop()
+                    stack[-1][0] += p * n
+                else:
+                    stack[-1][0] += ch
+            return stack[-1][0]
+        return solveIteratively()
