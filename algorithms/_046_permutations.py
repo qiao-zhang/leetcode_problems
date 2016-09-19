@@ -7,13 +7,11 @@ class Solution(object):
         def solveUsingLibrary():
             return [list(perm) for perm in itertools.permutations(nums)]
 
-        def solveDFS(nums=nums):
-            if not nums: yield []
-            for i, num in enumerate(nums):
-                for lst in solveDFS(nums[:i] + nums[i+1:]):
-                    yield [num] + lst
+        def solveRecursively():
+            def helper(nums=nums):
+                if not nums: yield []
+                for i, num in enumerate(nums):
+                    for lst in solveDFS(nums[:i] + nums[i+1:]):
+                        yield [num] + lst
 
-        def solveBFS():
-            pass
-
-        return list(solveDFS())
+        return solveRecursively()

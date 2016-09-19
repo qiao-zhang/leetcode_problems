@@ -5,22 +5,20 @@ class Solution(object):
         :rtype: int
         """
         def solveIteratively():
-            assert nums
             s, ms = 0, -float('inf')
             for num in nums:
                 s += num
                 ms = max(s, ms)
-                s = max(0, s)
+                if s < 0: s = 0
             return ms
 
         def solveDC():
             assert nums
-            def helper(nums=nums):
-                if len(nums) == 1: return (nums[0],) * 4
-                m = len(nums) // 2
-                fb, fn, fl, fr = helper(nums[:m])
-                sb, sn, sl, sr = helper(nums[m:])
+            def helper(lo=0, hi=len(nums)-1):
+                if hi == lo: return (nums[lo], ) * 4
+                m = (lo + hi) // 2
+                fb, fn, fl, fr = helper(lo, m)
+                sb, sn, sl, sr = helper(m+1, hi)
                 return fb + sb, max(fn, sn, fr + sl), max(fl, fb + sl), max(fr + sb, sr)
             return max(helper())
-
         return solveDC()
