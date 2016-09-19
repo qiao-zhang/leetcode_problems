@@ -11,9 +11,11 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
-        def postorder(node):
-            if not node:
-                return 0, 0
-            left, right = postorder(node.left), postorder(node.right)
-            return node.val + left[1] + right[1], max(left) + max(right)
-        return max(postorder(root))
+        def solveRecursively():
+            def helper(node=root):
+                if not node: return 0, 0
+                lw, lo = helper(node.left)
+                rw, ro = helper(node.right)
+                return node.val + lo + ro, max(lw, lo) + max(rw, ro)
+            return max(helper())
+        return solveRecursively()

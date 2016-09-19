@@ -13,12 +13,14 @@ class Solution(object):
         :type k: str
         :rtype: int
         """
-        return next(islice(self.inorder(root), k-1, k))
+        return inorder()
 
     def inorder(self, root):
-        if root:
+        def helper(root=root):
+            if not root: return
             for val in self.inorder(root.left):
                 yield val
             yield root.val
             for val in self.inorder(root.right):
                 yield val
+        return next(itertools.islice(helper(), k-1, k))

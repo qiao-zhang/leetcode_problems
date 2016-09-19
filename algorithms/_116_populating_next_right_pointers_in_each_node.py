@@ -10,12 +10,12 @@ class Solution:
     # @param root, a tree link node
     # @return nothing
     def connect(self, root):
-        parent = root
-        while parent and parent.left:
-            kid = parent.left
-            while parent.next:
-                parent.left.next = parent.right
-                parent.right.next = parent.next.left
-                parent = parent.next
-            parent.left.next = parent.right
-            parent = kid
+        if not root: return
+        head, nextHead = root, root.left
+        while nextHead:
+            while head.next:
+                head.left.next = head.right
+                head.right.next = head.next.left
+                head = head.next
+            head.left.next = head.right
+            head, nextHead = nextHead, nextHead.left
