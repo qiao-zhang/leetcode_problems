@@ -4,15 +4,17 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
-        def solveDFS(pattern='', left=n, right=n):
-            if left:
-                for p in solveDFS(pattern + '(', left-1, right):
-                    yield p
-            if right > left:
-                for p in solveDFS(pattern + ')', left, right-1):
-                    yield p
-            if not right:
-                yield pattern
+        def solveDFS():
+            def helper(pattern='', left=n, right=n)
+                if left:
+                    for p in solveDFS(pattern + '(', left-1, right):
+                        yield p
+                if right > left:
+                    for p in solveDFS(pattern + ')', left, right-1):
+                        yield p
+                if not right:
+                    yield pattern
+            return list(helper())
 
         def solveBFS():
             res, queue = [], collections.deque([('', n, n)])
@@ -24,4 +26,4 @@ class Solution(object):
                     res.append(pattern)
             return res
 
-        return list(solveDFS()) or solveBFS()
+        return solveBFS()
