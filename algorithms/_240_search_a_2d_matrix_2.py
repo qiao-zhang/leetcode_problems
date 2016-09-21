@@ -8,7 +8,8 @@ class Solution(object):
         if not matrix: return False
         c = len(matrix[0]) - 1
         for row in matrix:
-            while maxc >= 0 and row[c] > target:
-                maxc -= 1
-            if row[maxc] == target: return True
+            while c >= 0 and row[c] > target:
+                c -= 1
+            if c < 0: return False
+            if row[c] == target: return True
         return False

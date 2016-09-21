@@ -4,12 +4,21 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        num1, num2 = float('inf'), float('inf')
-        for num in nums:
-            if num <= num1:
-                num1 = num
-            elif num <= num2:
-                num2 = num
-            else:
-                return True
-        return False
+        def bisect_left(nums, num):
+            lo, hi = 0, len(nums)
+            while lo < hi:
+                m = (lo + hi) // 2
+                if nums[m] == num: return m
+                if nums[m] < num: lo = m + 1
+                else: hi = m
+            return hi
+            
+        def solve(k=3):
+            dp = [float('inf')] * (k - 1)
+            for num in nums:
+                i = bisect_left(dp, num)
+                if i >= k - 1: return True
+                dp[i] = num
+            return False
+
+        return solve()

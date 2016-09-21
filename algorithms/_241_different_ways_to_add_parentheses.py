@@ -18,4 +18,3 @@ class Solution(object):
                             yield ops[i](n1, n2)
             return list(helper())
         return solveRecursively()
-                

@@ -7,7 +7,7 @@ class Solution(object):
         """
         def solveUsingLibrary():
             return itertools.combinations(range(1, n+1), k)
-        def solveRecursively():
+        def solveRecursively1():
             def helper(lo=1, k=k):
                 if n - lo + 1 < k or k <= 0:
                     yield []
@@ -18,4 +18,17 @@ class Solution(object):
                         for lst in helper(i+1, k-1):
                             yield [i] + lst
             return list(helper())
-        return solveRecursively()
+        def solveRecursively2():
+            def solve(n=n, k=k):
+                if n < k or k == 0:
+                    yield []
+                    return
+                if n == k:
+                    yield list(range(1, n+1))
+                    return
+                for lst in solve(n-1, k):
+                    yield lst
+                for lst in solve(n-1, k-1):
+                    yield lst + [n]
+            return list(solve())
+        return solveRecursively2()
