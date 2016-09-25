@@ -21,4 +21,5 @@ class Solution(object):
                 sb, sn, sl, sr = helper(m+1, hi)
                 return fb + sb, max(fn, sn, fr + sl), max(fl, fb + sl), max(fr + sb, sr)
             return max(helper())
+            
         return solveDC()
